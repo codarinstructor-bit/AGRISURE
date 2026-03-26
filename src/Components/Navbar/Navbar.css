@@ -1,0 +1,32 @@
+input[type="checkbox"] {
+    display: none;
+}
+
+nav #burger:checked~ul {
+    width: fit-content;
+    transition: all 0.3s ease;
+    background-color: white;
+    padding-left: 2em;
+    padding-right: 2em;
+    overflow-y: auto;
+}
+
+ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 5px;
+    background-color: rgba(108, 189, 69, 1);
+    ;
+    transition: width 0.5s;
+}
+
+ul li a:hover::before {
+    width: 100%;
+}
+
+.zindex {
+    z-index: 99;
+}
