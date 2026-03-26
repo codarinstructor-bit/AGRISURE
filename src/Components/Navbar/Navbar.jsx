@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <header class=" flex justify-center items-center fixed top-0 right-0 left-0 w-full zindex px-4 lg:px-14 xl:px-20 py-3 bg-white shadow-xl">
-      <a href="./index.html">
-        <div class="logo flex items-center gap-3">
+      <Link to="/AGRISURE">
+      <div class="logo flex items-center gap-3">
           <div class=" flex items-center flex-col">
             <img src={logo} alt="fredvic-logo" class=" w-14" />
           </div>
@@ -20,7 +20,7 @@ function Navbar() {
             </h1>
           </div>
         </div>
-      </a>
+      </Link>
       <nav class=" flex-1">
         <input type="checkbox" name="burger" id="burger" />
         <ul class=" lg:flex lg:bg-transparent lg:gap-10 lg:items-center lg:justify-center fixed zindex top-0 lg:static w-0 lg:w-full lg:h-full h-full pt-10 lg:pt-0 right-0 transition-all">
