@@ -1,62 +1,6 @@
-// const BASE_URL = "https://agrisure-stff.onrender.com/api/register/";
-
-// export const agrisureApi = {
-//   // REGISTER
-//   async register(userData) {
-//     const res = await fetch(`${BASE_URL}/api/register/`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(userData),
-//     });
-
-//     const data = await res.json();
-
-//     if (!res.ok) {
-//       throw new Error(data.message || "Registration failed");
-//     }
-
-//     return data;
-//   },
-
-//   // LOGIN
-//   async login(loginData) {
-//     const res = await fetch(`${BASE_URL}/api/login/`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(loginData),
-//     });
-
-//     const data = await res.json();
-
-//     if (!res.ok) {
-//       throw new Error(data.detail || "Login failed");
-//     }
-
-//     localStorage.setItem("access_token", data.access);
-//     localStorage.setItem("refresh_token", data.refresh);
-
-//     return data;
-//   },
-
-//   // LOGOUT
-//   logout() {
-//     localStorage.removeItem("access_token");
-//     localStorage.removeItem("refresh_token");
-//   },
-
-//   // GET ACCESS TOKEN
-//   getAccessToken() {
-//     return localStorage.getItem("access_token");
-//   },
-// };
-
 const BASE_URL = "https://agrisure-stff.onrender.com";
 
-export const agrisureApi = {
+export const agriSureApi = {
   // REGISTER
   async register(userData) {
     const res = await fetch(`${BASE_URL}/api/register/`, {
@@ -174,43 +118,3 @@ export const agrisureApi = {
     return localStorage.getItem("access_token");
   },
 };
-
-// export const agrisureApi = {
-//   async register(userData) {
-//     const res = await fetch(`${BASE_URL}/api/register/`, {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(userData),
-//     });
-
-//     const data = await res.json();
-//     if (!res.ok) throw new Error(data.message || "Registration failed");
-
-//     return data;
-//   },
-
-//   async login(loginData) {
-//     const res = await fetch(`${BASE_URL}/api/login/`, {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(loginData),
-//     });
-
-//     const data = await res.json();
-//     if (!res.ok) throw new Error(data.detail || "Login failed");
-
-//     localStorage.setItem("access_token", data.access);
-//     localStorage.setItem("refresh_token", data.refresh);
-
-//     return data;
-//   },
-
-//   logout() {
-//     localStorage.removeItem("access_token");
-//     localStorage.removeItem("refresh_token");
-//   },
-
-//   getAccessToken() {
-//     return localStorage.getItem("access_token");
-//   },
-// };

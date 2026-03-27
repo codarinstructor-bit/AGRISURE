@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { agrisureApi } from "../../../Api/agrisureApi";
+import { agriSureApi } from "../../Api/AgrisureApi";
 
 function Form() {
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ function Form() {
         farm_size: formData.farm_size ? Number(formData.farm_size) : null,
       };
 
-      const response = await agrisureApi.register(payload);
+      const response = await agriSureApi.register(payload);
 
       setSuccess(response.message || "User created successfully");
 

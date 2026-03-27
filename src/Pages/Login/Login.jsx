@@ -4,7 +4,7 @@ import "../../assets/fonts/fonts.css";
 import Logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { agrisureApi } from "../../Api/AgrisureApi";
+import { agriSureApi } from "../../Api/AgrisureApi";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -29,8 +29,8 @@ function Login() {
     }));
   };
   // Handle login submit
-  console.log("API:", agrisureApi);
-  console.log("LOGIN TYPE:", typeof agrisureApi.login);
+  console.log("API:", agriSureApi);
+  console.log("LOGIN TYPE:", typeof agriSureApi.login);
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -44,7 +44,7 @@ function Login() {
         password: formData.password,
       };
 
-      await agrisureApi.login(payload);
+      await agriSureApi.login(payload);
 
       setMessage("Login successful");
 
