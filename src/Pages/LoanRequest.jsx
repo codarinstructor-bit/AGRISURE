@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from "react";
-import { agrisureApi } from "../Api/agrisureApi.js";
+import { agrisureApi } from "../../Api/agrisureApi.js";
 import { useNavigate } from "react-router-dom";
 
 function LoanRequest() {

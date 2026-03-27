@@ -4,7 +4,7 @@ import "../../assets/fonts/fonts.css";
 import Logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { agrisureApi } from "../../Api/agrisureApi";
+import { agrisureApi } from "../../Api/AgrisureApi";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -63,7 +63,7 @@ function Login() {
     <div>
       <section className="login">
         <div className="bg-white shadow-2xl pb-5">
-          <Link to="/">
+          <Link to="/AGRISURE">
             <div className="logo flex gap-3 items-center p-3">
               <img src={Logo} alt="" />
               <h1 className=" font-extrabold text-2xl">AgriSure</h1>

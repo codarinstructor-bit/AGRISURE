@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState, useCallback } from "react";
-import { agrisureApi } from "../Api/agrisureApi.js";
+import { agrisureApi } from "../../Api/agrisureApi.js";
 
 function Lending() {
   const [loanResult, setLoanResult] = useState(null);
