@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { agrisureApi } from "../../Api/agrisureApi";
 
 function Form() {
   const navigate = useNavigate();
@@ -18,10 +19,12 @@ function Form() {
   const [success, setSuccess] = useState("");
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -32,48 +35,51 @@ function Form() {
     setSuccess("");
 
     try {
-      const response = await fetch(
-        "https://agrisure-stff.onrender.com/api/register/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        },
-      );
+      const payload = {
+        username: formData.username,
+        password: formData.password,
+        phone: formData.phone,
+        location: formData.location,
+        farm_size: formData.farm_size ? Number(formData.farm_size) : null,
+      };
 
-      const data = await response.json();
+      const response = await agrisureApi.register(payload);
 
-      if (!response.ok) {
-        throw new Error(data.message || "Registration failed");
-      }
+      setSuccess(response.message || "User created successfully");
 
-      setSuccess("Account created successfully!");
+      // Clear form after success
+      setFormData({
+        username: "",
+        password: "",
+        phone: "",
+        location: "",
+        farm_size: "",
+      });
 
-      // redirect after 2 seconds
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+      // Optional:
+      navigate("/login");
     } catch (err) {
       setError(err.message || "Something went wrong");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
     <>
       <section className="form-container">
         <form action="" onSubmit={handleSubmit}>
-          {error && (
-            <div className="bg-red-100 text-red-700 p-2 rounded">{error}</div>
-          )}
-          {success && (
-            <div className="bg-green-100 text-green-700 p-2 rounded">
-              {success}
-            </div>
-          )}
+        {success && (
+          <p className="mb-4 text-sm text-green-700 bg-green-100 px-4 py-2 rounded-lg">
+            {success}
+          </p>
+        )}
+
+        {error && (
+          <p className="mb-4 text-sm text-red-700 bg-red-100 px-4 py-2 rounded-lg">
+            {error}
+          </p>
+        )}
           <div className="input mb-5">
             <div className="text">
               <h4 className=" font-bold mb-3">Username</h4>
@@ -138,8 +144,19 @@ function Form() {
           </div>
 
           <div className="button">
-            <button className="bg-[#11D432] w-full rounded-lg p-3 font-bold shadow-lg" type="submit" disabled={loading}>
-              {loading ? "Creating account..." : "Register"}
+            <button
+              type="submit"
+              disabled={loading}
+              className="mt-2 w-full py-3 rounded-full bg-[#0b5e20] text-white font-bold flex items-center justify-center gap-2 hover:opacity-90 transition disabled:opacity-50"
+            >
+              {loading ? (
+                <span className="flex items-center gap-2">
+                  <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                  Processing...
+                </span>
+              ) : (
+                "Register"
+              )}
             </button>
           </div>
 

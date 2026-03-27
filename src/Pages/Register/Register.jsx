@@ -11,7 +11,7 @@ function Register() {
     <div>
       <section className="register">
         <div className="bg-white shadow-2xl pb-5">
-          <Link to="/AGRISURE">
+          <Link to="/">
             <div className="logo flex gap-3 items-center p-3">
               <img src={Logo} alt="" />
               <h1 className=" font-extrabold text-2xl">AgriSure</h1>
