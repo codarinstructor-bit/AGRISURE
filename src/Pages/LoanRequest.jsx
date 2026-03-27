@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from "react";
-import { agrisureApi } from "../../Api/agrisureApi.js";
+import { agriSureApi } from '../Api/AgrisureApi';
 import { useNavigate } from "react-router-dom";
 
 function LoanRequest() {
@@ -43,7 +43,7 @@ function LoanRequest() {
         phone: formData.phone,
       };
 
-      await agrisureApi.requestLoan(payload);
+      await agriSureApi.requestLoan(payload);
 
       navigate("/dashboard");
 
