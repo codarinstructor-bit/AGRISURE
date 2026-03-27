@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState, useCallback } from "react";
-import { agrisureApi } from "../../Api/agrisureApi.js";
+import { agriSureApi } from "../Api/AgrisureApi";
 
 function Lending() {
   const [loanResult, setLoanResult] = useState(null);
@@ -25,8 +25,8 @@ function Lending() {
     }
   }, []);
 
-  console.log("API:", agrisureApi);
-  console.log("LOGIN TYPE:", typeof agrisureApi.login);
+  console.log("API:", agriSureApi);
+  console.log("LOGIN TYPE:", typeof agriSureApi.login);
   const getLoanOffers = useCallback(async () => {
     setLoadingOffers(true);
     setError("");
@@ -39,7 +39,7 @@ function Lending() {
         risk: loanResult?.risk || "B+",
       };
 
-      const data = await agrisureApi.fetchLoanOffers(payload);
+      const data = await agriSureApi.fetchLoanOffers(payload);
 
       const extractedOffers = Array.isArray(data)
         ? data
@@ -87,7 +87,7 @@ function Lending() {
         amount: selectedOffer.amount,
       };
 
-      const data = await agrisureApi.acceptLoan(payload);
+      const data = await agriSureApi.acceptLoan(payload);
 
       setSuccess(data.message || "Loan accepted successfully");
 
